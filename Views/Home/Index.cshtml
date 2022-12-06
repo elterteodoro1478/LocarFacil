@@ -1,0 +1,435 @@
+﻿@using LocarFacil.Models;
+@model DadosBusca;
+
+@{    
+    List<Estados> ListaEstados = ViewBag.ListaEstados as List<Estados>;
+    List<Cidades> ListaCidades = ViewBag.ListaCidades as List<Cidades>;  
+    List<Bairros> ListaBairros = ViewBag.ListaBairros as List<Bairros>;
+    List<TipoImovel> ListaTipoImovel = ViewBag.ListaTipoImovel as List<TipoImovel>;
+    List<Imovel> ListaImovel = ViewBag.ListaImovel as List<Imovel>;    
+
+   //Layout = "_Layout.cshtml";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+   <head>
+      
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
+      <style type="text/css">
+         .auto-fontes1 {
+         font-weight: bold;
+         font-size: large;
+         color: #FFFFFF;
+         padding-left: 0px;	
+         },
+         
+         .auto-fontes2 {
+			  font-family: Arial;
+			  color: #2E6DA4;
+			  font-size: xx-large (48 pt);
+			  font-weight: normal;
+		  }
+
+         .alinhamento15 {
+         padding-left: 15px;			   
+         }
+         .alinhamento0 {
+         padding-left: 0px;			   
+         }
+         .alinhamento10 {
+         padding-left: 10px;			   
+         }
+         .alinhamento15 {
+         padding-left: 15px;			   
+         }
+         .alinhamento20 {
+         padding-left: 15px;			   
+         }
+      .auto-style1 {
+		  position: relative;
+		  min-height: 1px;
+		  float: left;
+		  width: 33.33333333%;
+		  text-align: right;
+		  padding-left: 15px;
+		  padding-right: 15px;
+	  }
+	  .auto-style3 {
+		  font-family: Arial;
+		  color: #2E6DA4;
+		  font-size: xx-large;
+		  font-weight: normal;
+	  }
+      .auto-style4 {
+		  text-align: center;
+	  }
+	  .auto-style5 {
+		  font-family: Arial;
+		  font-style: italic;
+		  font-weight: bold;
+		  font-size: medium;
+		  color: #00FF00;
+	  },
+	  .stlle100 {
+				text-transform: uppercase;
+				color: #679123;
+				font-size: 10px;
+				font-family: "Lato Regular", Helvetica, Arial, sans-serif;
+				line-height: 1.5;
+			}
+      .auto-style6 {
+		  font-family: Arial;
+		  font-size: large;
+		  color: rgb(35, 82, 124);
+	  }
+	  .auto-style7 {
+		  font-family: Arial;
+		  font-weight: bold;
+		  color: rgb(238, 162, 54);
+		  font-size: medium;
+	  }
+      .auto-style8 {
+		  font-family: Arial;
+		  font-weight: bold;
+		  color: rgb(238, 162, 54);
+		  font-size: x-large;
+	  }
+      .auto-style9 {
+		  padding-left: 15px;
+		  padding-right: 15px;
+		  text-align: right;
+	  }
+      </style>
+   </head>
+  
+   <body style="background-color: #FFFEF9">
+        
+       <form class="js-form-resultados-da-busca-refinar-sidebar js-slide-toggle" style="" action="/Home/Index" method="post">
+                
+	        <div class="container">
+              <hr>
+		     <div class="col-xs-3" style="left: 0px; top: 0px; width: 30%; height : 760px ; margin-left: auto;background: rgb(147, 147, 198);">
+             
+             
+                    <div class="auto-style4">
+                   <br><span class="auto-style5">651- Imoveis para alugar</span><br>
+                    </div>
+                   <hr style="background-color:#FFFFFF">
+               
+                   <div class="row auto-alinhamento15">
+                      <span class="auto-fontes1">
+                      <label for="IdTipoImovel">Tipo do imóvel</label></span><br>	
+                      <select class="form-control select2"  id="IdTipoImovel" name="IdTipoImovel"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 0px;" >
+                     
+                          <option value="0">Todos</option>
+                          @foreach (var Item in ListaTipoImovel)
+                          {
+                                if (Item.Id == Model.IdTipoImovel)
+                                {
+                                    <option value="@Item.Id" selected>@Html.Raw(Item.Nome)</option>
+                                }
+                                else
+                                {
+                                    <option value="@Item.Id">@Html.Raw(Item.Nome)</option>
+                                }
+                          }                      
+                      
+                      </select>
+                   </div>
+
+                   <div class="row auto-alinhamento15">
+                      <span class="auto-fontes1">
+                      <label for="UF">UF</label></span><br>								
+                      <select class="form-control select2"  id="UF" name="UF"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 0px;" >
+                     
+                          <option value="">Todos</option>
+                          @foreach (var Item in ListaEstados)
+                          {
+                                if (Item.UF == Model.UF)
+                                {
+                                    <option value="@Item.UF" selected>@Item.UF</option>
+                                }
+                                else
+                                {
+                                    <option value="@Item.UF">@Item.UF</option>
+                                }
+                          }
+                      </select>
+                   </div>
+
+                   <div class="row auto-alinhamento15">
+                      <span class="auto-fontes1">
+                      <label for="Cidade">Cidade</label></span><br>								
+                      <select class="form-control select2"  id="Cidade" name="Cidade"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 0px;" >
+                     
+					      <option value="">Todos</option>
+                          @foreach (var Item in ListaCidades)
+                          {
+                                if (Item.Nome == Model.Cidade)
+                                {
+                                    <option value="@Item.Nome" selected>@Item.Nome</option>
+                                }
+                                else
+                                {
+                                    <option value="@Item.Nome">@Item.Nome</option>
+                                }
+                          }   					  
+					  
+                      </select>
+                   </div>
+
+                   <div class="row auto-alinhamento15">
+                      <span class="auto-fontes1">
+                      <label for="Bairro">Bairro</label></span><br>								
+                      <select class="form-control select2"  id="Bairro" name="Bairro"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 0px;" >
+                     
+					      <option value="">Todos</option>
+                          @foreach (var Item in ListaBairros)
+                          {
+                                if (Item.Nome == Model.Bairro)
+                                {
+                                    <option value="@Item.Nome" selected>@Html.Raw(Item.Nome)</option>
+                                }
+                                else
+                                {
+                                    <option value="@Item.Nome">@Html.Raw(Item.Nome)</option>
+                                }
+                          } 
+					  
+                      </select>
+                   </div>
+
+                   <div class="row" style="width: 280px; text-align: left;">
+                      <div class="col-xs-6  alinhamento0" style="left: 0px; top: 0px; width: 50%">    
+                         <span class="auto-fontes1">						
+                         <label for="Quartos">Quartos</label></span>
+                      </div>
+                      <div class="col-xs-6  alinhamento15" style="left: 0px; top: 0px; width: 50%">    
+                         <span class="auto-fontes1 alinhamento15">						
+                         <label for="Banheiros">Banheiros</label></span>
+                      </div>
+                   </div>
+               
+                   <div class="row" style="width: 280px; text-align: left;">
+                      <div class="col-xs-6  alinhamento0" style="left: 0px; top: 0px; width: 55%">
+                         <select class="form-control"  id="Quartos" name="Quartos"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 0px;" >
+                            <option value="0"></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="100">5+</option>
+                         </select>
+                      </div>
+                      <div class="col-xs-6" style="left: 0px; top: 0px; width: 45%;padding-left: 18px;">
+                         <select class="form-control"  id="Banheiros" name="Banheiros"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 17px; width: 157%;" >
+                            <option value="0"></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="100">5+</option>
+                         </select>
+                      </div>
+                   </div>
+               
+                   <div class="row" style="width: 280px; text-align: left;">
+                      <div class="col-xs-6  alinhamento0" style="left: 0px; top: 0px; width: 50%">    
+                         <span class="auto-fontes1">						
+                         <label for="Vagas">Vagas</label></span>
+                      </div>
+                      <div class="col-xs-6  alinhamento15" style="left: 0px; top: 0px; width: 50%">    
+                         <span class="auto-fontes1 alinhamento15">						
+                         <label for="Salas">Salas/Suites</label></span>
+                      </div>
+                   </div>
+
+                   <div class="row" style="width: 280px; text-align: left;">
+                      <div class="col-xs-6  alinhamento0" style="left: 0px; top: 0px; width: 55%">
+                         <select class="form-control"  id="js-Vagas" name="Vagas"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 0px;" >
+                            <option value="0"></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="100">5+</option>
+                         </select>
+                      </div>
+                      <div class="col-xs-6" style="left: 0px; top: 0px; width: 45%;padding-left: 18px;">
+                         <select class="form-control"  id="js-Salas" name="Salas"  style="background: rgb(255, 255, 255); color: #000000; padding-left: 17px; width: 157%;" >
+                            <option value="0"></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="100">5+</option>
+                         </select>
+                      </div>
+                   </div>
+                   <div class="row auto-alinhamento15">
+                      <div class="col-xs-12 alinhamento0" style="left: 0px; top: 0px; width: 84%">
+                         <span class="auto-fontes1 alinhamento0"><label for="js-imovel">Areas:</label></span><br>										
+                      </div>
+                      <div class="col-xs-6 alinhamento0">	
+                         <input type="text" class="js-meter form-control" id="TamanhoDe" Name="TamanhoDe" placeholder=" De" style="width: 94%">										 
+                      </div>
+                      <div class="col-xs-6">
+                         <input type="text" class="js-meter form-control" id="TamanhoAte" Name="TamanhoAte" placeholder=" Até" style="width: 110%">
+                      </div>
+                   </div>
+
+                   <div class="row auto-alinhamento15">
+                      <div class="col-xs-12 alinhamento0" style="left: 0px; top: 0px; width: 84%">
+                         <span class="auto-fontes1 alinhamento0">
+                         <label for="VrAluguelDe">Preço:</label>
+                         </span><br>										
+                      </div>
+                  
+                      <div class="col-xs-6 alinhamento0">	
+                         <input type="text" class="js-meter form-control" id="VrAluguelDe"  Name="VrAluguelDe" placeholder=" De" style="width: 94%">										 
+                      </div>
+                      <div class="col-xs-6">							    
+                         <input type="text" class="js-meter form-control" id="VrAluguelAte" Name="VrAluguelAte" placeholder=" Até" style="width: 110%">
+                      </div>
+                   </div>
+                              
+                   <br>
+									
+				    <div class="row">				   
+					    <input type="submit" value="BUSCAR" class="btn btn-success btn-lg" style="width: 75%; height: 39px; margin-left: 33px;">
+				
+				    </div> 
+            
+             </div>
+		 		 
+              <div class="col-xs-9" style="left: 18px; top: 0px; width: 70%; margin-left: auto;">
+            
+         	    <div class="row">
+				    <div class="row" style="box-sizing: border-box; margin-left: -15px; margin-right: -15px;">
+					
+					    <div class="col-sxs-6 col-xs-3 padding-top-10" style="box-sizing: border-box; position: relative; min-height: 1px; padding-left: 15px; padding-right: 15px; float: left; width: 195px; padding-top: 10px;">
+						    <select id="OrdenarPor" Name="OrdenarPor" class="form-control pull-right" style="box-sizing: border-box; font-family: inherit; font-size: 16px; margin: 0px; text-transform: none; line-height: 1.4; display: block; width: 165px; height: 36px; padding: 6px 12px; color: rgb(85, 85, 85); background-color: rgb(255, 255, 255); background-image: none; border: 1px solid rgb(204, 204, 204); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s; float: right !important;">
+					
+							    <option style="box-sizing: border-box;" value="0">Relevante</option>
+							    <option style="box-sizing: border-box;" value="1">Menor preço</option>
+							    <option style="box-sizing: border-box;" value="2">Maior preço</option>
+						    </select>
+					    </div>
+				    </div>				
+			    </div>	
+						
+         	    <div class="row">				
+				    <hr>
+			    </div>	
+			
+
+                 @foreach (var Item in ListaImovel)
+                 {
+                 
+			        <div class="row" id="DivImovel_@Item.Id">	 
+					        <div class="col-xs-3 col-sm-3" style="width: 25%; left: 4px; top: 1px; height: 260px;" id="DivFotoImovel_@Item.Id">			 
+						         <a href="" onclick="javascript:eventoGA();">
+						         <span class="">							 
+							         <img alt="" src="~/Fotos1/@Item.LinkFoto" height="159" width="228" id="img_@Item.Id" />
+							         </span>
+						          </a>					 
+					
+					        </div>
+				 				 
+					 
+					        <div class="col-xs-9 col-sm-9" style="width: 69%; left: 68px; top: 2px;" id="DivDetalheImovel_@Item.Id">
+						         <a href="" onclick="javascript:eventoGA();"  id="Link_01_Imovel_@Item.Id"
+							        style="box-sizing: border-box; background: transparent; color: rgb(102, 102, 102); text-decoration: none;" 
+							        title="@Item.Descricao">
+							        <h2 class="margin-0" style="box-sizing: border-box; font-family: &quot;Lato Light&quot;, sans-serif; font-weight: normal; line-height: 1.1; color: inherit; margin: 0px; font-size: 24px;"></h2>
+								 
+							        <br>
+						         </a>
+
+						         <a href="" onclick="javascript:eventoGA('');"  id="Link_02_Imovel_@Item.Id"
+							        style="box-sizing: border-box; background: transparent; text-decoration: none;" 
+							        title="">
+						          <span class="auto-style6">@Item.Descricao</span>
+						         </a>   
+						         <a href="#" onclick="javascript:abrirJanela('https://www.google.com.br/maps/place/@Item.Logradouro+-+@Item.Bairro++15+-+@Item.Cidade+-+@Item.UF/', 1200, 500);"   id="Link_02_Imovel_@Item.Id"
+							        style="box-sizing: border-box; background: transparent; color: rgb(102, 102, 102); text-decoration: none;" 
+							        title="">
+						         <br>
+						          <span class="auto-style7">@Item.Bairro, @Item.Cidade, @Item.UF</span>
+						         <br>
+						         <br>
+
+						        <p class="text-small text-overflow-40" style="margin: 0px 0px 20px; font-size: 14px; height: 40px; overflow: hidden;">
+						         @Item.Detalhamento !</p>
+						        <span class="hidden-xs hidden-sm" style="box-sizing: border-box;">
+							         <ul class="list-inline dados-item" style="box-sizing: border-box; margin-top: 0px; margin-bottom: 11px; padding-left: 0px; list-style: none; position: relative;">
+								         <li style="box-sizing: border-box; display: inline-block; padding-left: 0px; padding-right: 5px; border: 0px;">
+								         <span class="item-descricao text-bold clearfix" style="box-sizing: border-box; font-family: &quot;Lato Bold&quot;, sans-serif; color: rgb(102, 102, 102); display: inline-block; font-size: 12px;">
+								         ÁREA</span><span class="item-descricao-conteudo margin-right-5" style="box-sizing: border-box; margin-right: 5px; display: inline-block; float: left; font-size: 16px; font-weight: 800; text-align: center;" title="158">@Item.Tamanho</span></li>
+								         <li style="box-sizing: border-box; display: inline-block; padding-left: 5px; padding-right: 5px; border-left: 1px solid rgb(204, 204, 204);">
+								         <span class="item-descricao text-bold clearfix" style="box-sizing: border-box; font-family: &quot;Lato Bold&quot;, sans-serif; color: rgb(102, 102, 102); display: inline-block; font-size: 12px;">
+								         QUARTO(S)</span><span class="item-descricao-conteudo margin-right-5" style="box-sizing: border-box; margin-right: 5px; display: inline-block; float: left; font-size: 16px; font-weight: 800; text-align: center;" title="4">@Item.Quartos</span></li>
+								         <li style="box-sizing: border-box; display: inline-block; padding-left: 5px; padding-right: 5px; border-left: 1px solid rgb(204, 204, 204);">
+								         <span class="item-descricao text-bold clearfix" style="box-sizing: border-box; font-family: &quot;Lato Bold&quot;, sans-serif; color: rgb(102, 102, 102); display: inline-block; font-size: 12px;">
+								         VAGA(S)</span><span class="item-descricao-conteudo margin-right-5" style="box-sizing: border-box; margin-right: 5px; display: inline-block; float: left; font-size: 16px; font-weight: 800; text-align: center;" title="4">@Item.Vagas</span></li>
+								         <li style="box-sizing: border-box; display: inline-block; padding-left: 5px; padding-right: 5px; border-left: 1px solid rgb(204, 204, 204);">
+								         <span class="item-descricao text-bold clearfix" style="box-sizing: border-box; font-family: &quot;Lato Bold&quot;, sans-serif; color: rgb(102, 102, 102); display: inline-block; font-size: 12px;">
+								         BANHEIRO(S)</span><span class="item-descricao-conteudo margin-right-5" style="box-sizing: border-box; margin-right: 5px; display: inline-block; float: left; font-size: 16px; font-weight: 800; text-align: center;" title="1">@Item.Banheiros</span></li>
+							         </ul>					 
+						 
+						        </span></a>						 
+						 
+						         <br>
+						          <span class="auto-style8">R$ @Item.VrAluguel</span>
+						         <br>	
+						 
+						         <div class="auto-style9">				   
+							        <input type="button" value="Ver detalhes" class="btn btn-success btn-lg" style="width: 33%; height: 38px; margin-left: 183px;">					
+						         </div>
+						 
+					         </div>
+			        </div>
+			
+			        <div class="row">				
+				        <hr>
+			        </div>
+
+                 }
+
+
+			
+            
+            </div>        
+                  
+          </div>      
+      
+        </form>
+   </body>      
+   
+</html>
+
+<script type="text/javascript">
+		
+
+       
+        $(document).ready(function() {
+            $('.select2').select2();
+        }); 
+
+		function abrirJanela(pagina, largura, altura) 
+        {
+		     // Definindo centro da tela
+		     var esquerda = (screen.width - largura)/2;
+		     var topo = (screen.height - altura)/2;
+		     // Abre a nova janela
+		     minhaJanela = window.open(pagina,'','height=' + altura + ', width=' + largura + ', top=' + topo + ', left=' + esquerda);
+		}
+		
+</script>

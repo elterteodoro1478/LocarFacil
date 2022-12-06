@@ -1,0 +1,65 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "Contexto",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "LocarFacil",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Bairros]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Cidades]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Estados]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Imovel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ImovelFotos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoImovel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UsuarioLocacao]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "DESKTOP-JH2OBJ2\\SQL2019.locaimovel",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": true,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
