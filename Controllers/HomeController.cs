@@ -19,10 +19,6 @@ namespace LocarFacil.Controllers
         }
         public IActionResult Index(DadosBusca dadosBusca)
         {
-			//HttpContextAccessor ipcontexto = new HttpContextAccessor();
-			//var ip = ipcontexto.HttpContext.Connection.LocalIpAddress.ToString();
-			//var ip = this.contexto.HttpContext.Connection.RemoteIpAddress.ToString();
-			
             dadosBusca = dadosBusca == null ?  new DadosBusca() : dadosBusca;
 			dadosBusca.Normalize();
 
@@ -48,6 +44,10 @@ namespace LocarFacil.Controllers
 
         public IActionResult Privacy()
         {
+            //HttpContextAccessor ipcontexto = new HttpContextAccessor();
+            //var ip = ipcontexto.HttpContext.Connection.LocalIpAddress.ToString();
+            //var ip = this.contexto.HttpContext.Connection.RemoteIpAddress.ToString();
+
             return View();
         }
 

@@ -13,7 +13,6 @@ namespace LocarFacil.Repository
             _contexto = contexto;
         }
 
-
         public async Task<IEnumerable<Imovel>> SelecionarTodos()
         {
             try
@@ -126,7 +125,6 @@ namespace LocarFacil.Repository
 
                 Lista = Lista != null && dadosBusca.Cep != "" ? await Task.FromResult(Lista.Where(n => n.Cep.Replace(".", "").Replace(".", "") == dadosBusca.Cep.Replace(".", "").Replace(".", "")).ToList()) : Lista;
                 
-
                 Lista = Lista != null && dadosBusca.Quartos > 0  ? dadosBusca.Quartos > 4 ? await Task.FromResult(Lista.Where(n => n.Quartos >= dadosBusca.Quartos).ToList()) :   await Task.FromResult(Lista.Where(n => n.Quartos == dadosBusca.Quartos).ToList()) : Lista;
 
                 Lista = Lista != null && dadosBusca.Banheiros > 0 ? dadosBusca.Banheiros > 4 ? await Task.FromResult(Lista.Where(n => n.Banheiros >= dadosBusca.Banheiros).ToList()) : await Task.FromResult(Lista.Where(n => n.Banheiros == dadosBusca.Banheiros).ToList()) : Lista;
@@ -142,7 +140,6 @@ namespace LocarFacil.Repository
                 Lista = Lista != null || dadosBusca.VrAluguelDe > 0 ? Lista : await Task.FromResult(Lista.Where(n => n.VrAluguel >= Convert.ToInt32(Math.Floor(dadosBusca.VrAluguelDe.Value))).ToList());
 
                 Lista = Lista != null || dadosBusca.VrAluguelAte > 0 ? Lista : await Task.FromResult(Lista.Where(n => n.VrAluguel <= Convert.ToInt32(Math.Floor(dadosBusca.VrAluguelAte.Value) + 1)).ToList());
-
 
                 switch (dadosBusca.OrdenarPor)
                 {
